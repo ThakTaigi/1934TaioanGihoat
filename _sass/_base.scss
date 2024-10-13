@@ -3,14 +3,17 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../font/Iansui0.92-Regular.woff2") format('woff2');
+  src: url("../font/Iansui.woff2") format('woff2');
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   font-family: 'TaigiFont', tauhu-oo, PingFangTC-Regular, "Microsoft JhengHei", sans-serif;
   line-height: 1.65;
   margin: 0;

@@ -1,26 +1,35 @@
-(function(){
+(function () {
+  // TODO edit
+  const repoPath = '';
+  const dataFolderPath = '/chheh';
+  const dataNamePrefix = '/TJTST1_';
+  const dataNameNumberCount = 3;
+  const dataNameSuffix = '.jpg';
+  const lastPageNumber = 12;
+
   let imgSources = [];
   const imgSourcesMin = 1;
-  const imgSourcesMax = 12;
+  const imgSourcesMax = lastPageNumber;
   for (i = imgSourcesMin; i < imgSourcesMax + 1; i++) {
+    var numberText = (i).toString().padStart(dataNameNumberCount, "0");
     imgSources.push({
       type: 'image',
-      url:  `../chheh/TJTST1_${('00' + i).slice(-3)}.jpg`
+      url: `..${repoPath}${dataFolderPath}${dataNamePrefix}${numberText}${dataNameSuffix}`
     })
   }
   const viewer = OpenSeadragon({
     id: 'viewer-block',
-    prefixUrl: '../assets/images/openseadragon/',
+    prefixUrl: `..${repoPath}/assets/images/openseadragon/`,
     tileSources: imgSources,
     sequenceMode: true,
     preload: true,
     minZoomImageRatio: 1,
     maxZoomPixelRatio: 4,
 
-    zoomInButton:   'viewer-zoom-in',
-    zoomOutButton:  'viewer-zoom-out',
-    homeButton:     'viewer-home',
-    nextButton:     'viewer-next',
+    zoomInButton: 'viewer-zoom-in',
+    zoomOutButton: 'viewer-zoom-out',
+    homeButton: 'viewer-home',
+    nextButton: 'viewer-next',
     previousButton: 'viewer-prev',
   });
 
@@ -45,12 +54,12 @@
   }
 
   function modifyUrl(page) {
-    const state = {'page': page};
+    const state = { 'page': page };
     window.history.pushState(state, '', replaceQueryParam('page', page, window.location.search));
   }
 
-  function displayCurrentPage(currentPage){
-    document.getElementById('current-page').innerHTML = "第 "+ currentPage + " 頁／總算 " + (imgSourcesMax - imgSourcesMin + 1) + " 頁。";
+  function displayCurrentPage(currentPage) {
+    document.getElementById('current-page').innerHTML = "第 " + currentPage + " 頁／總算 " + (imgSourcesMax - imgSourcesMin + 1) + " 頁。";
   }
   displayCurrentPage(imgSourcesMin);
   document.getElementById('viewer-block').append(loadingImg);
@@ -63,16 +72,16 @@
   if (params.page) {
     if (pageValid(params.page)) {
       const pageIndex = parseInt(params.page, 10) - 1;
-      viewer.goToPage(pageIndex); 
+      viewer.goToPage(pageIndex);
       displayCurrentPage(params.page);
     }
     else {
-      viewer.goToPage(imgSourcesMin - 1); 
+      viewer.goToPage(imgSourcesMin - 1);
       displayCurrentPage(imgSourcesMin);
       modifyUrl(imgSourcesMin);
     }
   }
-  viewer.addOnceHandler('open', function() {
+  viewer.addOnceHandler('open', function () {
     document.getElementById('loading-img').remove();
   });
 
@@ -83,13 +92,13 @@
     modifyUrl(pageNum);
 
     document.getElementById('viewer-block').append(loadingImg);
-    viewer.addOnceHandler('open', function() {
+    viewer.addOnceHandler('open', function () {
       document.getElementById('loading-img').remove();
     });
   });
 
   // browser history
-  window.onpopstate = function(e){
+  window.onpopstate = function (e) {
     // nice to have
   };
 
@@ -98,16 +107,16 @@
     return Math.min(imgSourcesMax, Math.max(imgSourcesMin, page));
   }
 
-  document.getElementById('goto-page').addEventListener('keyup', function(e){
+  document.getElementById('goto-page').addEventListener('keyup', function (e) {
     if (!e) e = window.event;
     var keyCode = e.code || e.key;
-    if (keyCode === 'Enter' || keyCode === 'NumpadEnter'){
-      viewer.goToPage(pageClamp(this.value) - 1); 
+    if (keyCode === 'Enter' || keyCode === 'NumpadEnter') {
+      viewer.goToPage(pageClamp(this.value) - 1);
       this.value = '';
       return false;
     }
   });
-  document.getElementById('goto-page__go').addEventListener('click', function(){
-    viewer.goToPage(pageClamp(document.getElementById('goto-page').value) - 1); 
+  document.getElementById('goto-page__go').addEventListener('click', function () {
+    viewer.goToPage(pageClamp(document.getElementById('goto-page').value) - 1);
   });
 })();

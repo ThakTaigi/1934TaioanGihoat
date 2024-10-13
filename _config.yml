@@ -8,7 +8,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
@@ -18,19 +18,19 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: 2023 ChhoeTaigi台語辭典冊讀á
-email: 
+title: ChhoeTaigi台語辭典⁺ 冊讀á
+email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Kán-kài
+  ChhoeTaigi Tâi-gí Sû-tián Phu-lá-suh
 baseurl: "/scannedImgViewer"
 url: "https://thak.taigi.info/"
 
 # navigation
 header_pages:
-        - index.md
-        - bokliok.md
-        - soatbeng.md
-        - chheh.md
+  - index.md
+  - bokliok.md
+  - soatbeng.md
+  - chheh.md
 
 # Server Config options
 livereload: true
@@ -39,7 +39,7 @@ livereload: true
 markdown: kramdown
 kramdown:
   typographic_symbols:
-      ndash: --
+    ndash: --
 
 # Build settings
 theme: minima
@@ -48,24 +48,3 @@ plugins:
 
 # Google Analytics
 google_analytics: G-TZPBG7KKJE
-
-
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
