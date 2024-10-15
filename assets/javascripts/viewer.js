@@ -1,6 +1,5 @@
 (function () {
   // TODO edit
-  const repoPath = '';
   const dataFolderPath = '/chheh';
   const dataNamePrefix = '/TJTST1_';
   const dataNameNumberCount = 3;
@@ -14,12 +13,12 @@
     var numberText = (i).toString().padStart(dataNameNumberCount, "0");
     imgSources.push({
       type: 'image',
-      url: `..${repoPath}${dataFolderPath}${dataNamePrefix}${numberText}${dataNameSuffix}`
+      url: `..${dataFolderPath}${dataNamePrefix}${numberText}${dataNameSuffix}`
     })
   }
   const viewer = OpenSeadragon({
     id: 'viewer-block',
-    prefixUrl: `..${repoPath}/assets/images/openseadragon/`,
+    prefixUrl: `../assets/images/openseadragon/`,
     tileSources: imgSources,
     sequenceMode: true,
     preload: true,
